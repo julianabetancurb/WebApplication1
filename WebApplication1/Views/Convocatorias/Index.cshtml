@@ -1,0 +1,95 @@
+﻿@model IEnumerable<WebApplication1.Models.Convocatoria>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    body, div, p, h1, h2 {
+        font-family: Arial, Helvetica, sans-serif !important;
+    }
+
+    body {
+        background: #1D2135;
+        color: #000;
+        font-family: Arial, Helvetica, sans-serif !important;
+        
+    }
+
+    .page {
+        padding: 2em;
+        background: #D8D8D8;
+        max-width: 30000px;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .item {
+        width: calc(33.33% - 20px);
+        background-color: #fff;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: center;
+        
+        box-shadow: 2px 2px 5px #888;
+    }
+    .item h2 {
+        background-color: #444; /* Color de fondo gris más oscuro para el título */
+        color: white; /* Color de texto blanco */
+        padding: 10px; /* Espacio alrededor del título */
+        margin: 0; /* Eliminar el margen predeterminado del título */
+    }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .item p {
+            margin: 10px 0; /* Espacio alrededor del contenido */
+            text-align: justify;
+        }
+
+        .item a {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .item .ver-mas {
+            display: inline-block;
+            padding: 10px 20px; /* Ajusta el tamaño del botón */
+            background-color: gray; /* Color de fondo gris para el botón */
+            color: white; /* Color de texto blanco para el botón */
+            text-decoration: none;
+            border: none;
+            text-align: center;
+        }
+
+            .item .ver-mas:hover {
+                background-color: darkgray; /* Cambiar el color de fondo en el hover */
+            }
+</style>
+
+
+
+<div class="page">
+<h1>CONVOCATORIAS</h1>
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <h2>@item.Titulo</h2>
+                <img src="@item.Imagen" alt="Imagen" />
+                <p>@item.Contenido</p>
+               <a class="ver-mas" asp-action="Details" asp-route-id="@item.Id">Ver más</a>
+                
+            </div>
+        }
+    </div>
+    <p style="text-align: center;">
+        <a type="submit" asp-action="Create" class="btn btn-secondary">Crear nueva convocatoria </a>
+    </p>
+</div>

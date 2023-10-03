@@ -1,0 +1,17 @@
+﻿@model WebApplication1.Models.Convocatoria
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar</h1>
+
+<h3>¿Está seguro de eliminar esta convocatoria?</h3>
+<div>
+    <form asp-action="Delete" method="post" onsubmit="return confirm('¿Está seguro de eliminar esta convocatoria?');">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Delete</button> |
+        <a asp-action="Index">Volver a convocatorias</a>
+    </form>
+</div>
+

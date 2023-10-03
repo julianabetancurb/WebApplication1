@@ -1,0 +1,95 @@
+﻿@model WebApplication1.Models.Convocatoria
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    .edit-container {
+        background-color: #1D2135;
+        color: white;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container {
+        background-color: white;
+        color: black;
+        padding: 30px;
+        box-sizing: border-box;
+        text-align: left;
+        margin: 10px auto; /* Centra el formulario verticalmente y lo coloca en el centro horizontal */
+        width: 100%; /* Establece un ancho máximo para el formulario */
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilos adicionales para el título */
+    .edit-title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Estilos adicionales para los campos del formulario */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    /* Aumentar el tamaño del textarea para el contenido */
+    .form-control-content {
+        height: 300px; /* Aumenta la altura para más espacio vertical */
+        width: 100%; /* Aumenta el ancho para más espacio horizontal */
+    }
+</style>
+
+
+
+<div class="edit-container">
+    <h4 class="edit-title">Editar convocatoria</h4>
+</div>
+
+<div class="form-container">
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Titulo" class="control-label"></label>
+                    <input asp-for="Titulo" class="form-control" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Contenido" class="control-label"></label>
+                    <textarea asp-for="Contenido" class="form-control form-control-content"></textarea>
+                    <span asp-validation-for="Contenido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Imagen" class="control-label"></label>
+                    <input asp-for="Imagen" class="form-control" />
+                    <span asp-validation-for="Imagen" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NombreCreador" class="control-label"></label>
+                    <input asp-for="NombreCreador" class="form-control" />
+                    <span asp-validation-for="NombreCreador" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-secondary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
